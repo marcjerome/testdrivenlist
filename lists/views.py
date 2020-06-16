@@ -6,8 +6,9 @@ from lists.models import Item
 def home_page(request):
     if request.method == 'POST':
         Item.objects.create(text=request.POST['item_text'])
-        return redirect('/')
-    
-    item = Item.objects.all()
-    return render(request, 'home.html', {'items': item})
+        return redirect('/lists/the-only-list-in-the-world')
+    return render(request, 'home.html')
 
+def view_list(request):
+    item = Item.objects.all()
+    return render(request, 'list.html', {'items': item})
