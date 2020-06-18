@@ -85,8 +85,9 @@ class NewVisitorTest(LiveServerTestCase):
         #time.sleep(1)
                
         # The page updates again, and now shows both items on her list
-        self.wait_for_now_in_list_table('1: Buy peacock feathers')
         self.wait_for_now_in_list_table('2: Use peacock feathers to make a fly')
+        self.wait_for_now_in_list_table('1: Buy peacock feathers')
+
         
         # Edith wonders wether the site will remember her list. The she sees 
         # that the site has generated a unique URL for her -- there is some 
@@ -126,7 +127,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_now_in_list_table('1. Buy milk')
+        self.wait_for_now_in_list_table('1: Buy milk')
         
         #Francis gets his own unique URL
         francis_list_url = self.browser.current_url
@@ -134,7 +135,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotEqual(francis_list_url, edith_list_url)
         
         #Again there is no trace of Edith's list
-        page_text = self.browser.find_element_tag_name('body').text
+        page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
         
