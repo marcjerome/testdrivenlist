@@ -1,5 +1,5 @@
 from django.test import LiveServerTestCase
-
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
@@ -19,7 +19,7 @@ MAX_WAIT = 10
 
 #browser.quit()
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
    
     
@@ -55,7 +55,7 @@ class NewVisitorTest(LiveServerTestCase):
         # She notices the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Your To-Do lists', header_text)
+        self.assertIn('Start a new To-Do list', header_text)
         
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
