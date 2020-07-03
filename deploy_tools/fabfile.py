@@ -44,7 +44,7 @@ def _update_virtualenv(source_folder):
 	run(f'{virtualenv_folder}/bin/pip install -r {source_folder}/requirements.txt')
 
 def _update_static_files(source_folder):
-	run(f'cd {source_folder} && ../virtualenv/bin/python manage.py collecstatic --noinput')
+	run(f'cd {source_folder} && ../virtualenv/bin/python manage.py collectstatic --noinput')
 
 def _update_database(source_folder):
 	run(f'cd {source_folder} && ../virtualenv/bin/python manage.py migrate --noinput')
