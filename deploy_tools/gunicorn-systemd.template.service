@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for staging.testdrivenlist.site
+
+[Service]
+Restart=on-failure
+User=elspeth
+WorkingDirectory=/home/elspeth/sites/staging.testdrivenlist.site/source
+ExecStart=/home/elspeth/sites/staging.testdrivenlist.site/virtualenv/bin/gunicorn --bind unix:/tmp/staging.testdrivenlist.site.socket superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
