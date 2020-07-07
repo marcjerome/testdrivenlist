@@ -4,6 +4,7 @@ from lists.views import home_page
 from django.http import HttpRequest
 from django.utils.html import escape
 from lists.models import Item, List
+from lists.forms import ItemForm
 # Create your tests here.
 
 
